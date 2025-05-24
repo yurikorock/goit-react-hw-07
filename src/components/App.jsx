@@ -8,7 +8,7 @@ import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
 import SearchBox from "./SearchBox/Searchbox";
 import { useSelector, useDispatch } from "react-redux";
-import { addContact } from "../redux/contactsSlice";
+
 import { changeFilter } from "../redux/filtersSlice";
 import { useEffect } from "react";
 import { fetchContacts, addContact, deleteContact } from "../redux/contactsOps";
@@ -28,13 +28,16 @@ const App = () => {
   const handleFilterChange = (value) => {
     dispatch(changeFilter(value));
   };
+  const handleDeleteContact = (contactId) => {
+    dispatch(deleteContact(contactId));
+  };
 
   return (
     <div>
       <h1 className="title">Phonebook</h1>
       <ContactForm onAdd={handleAddContact} />
       <SearchBox value={filter} onSearch={handleFilterChange} />
-      <ContactList />
+      <ContactList onDelete={handleDeleteContact} />
     </div>
   );
 };
