@@ -10,10 +10,16 @@ import SearchBox from "./SearchBox/Searchbox";
 import { useSelector, useDispatch } from "react-redux";
 import { addContact } from "../redux/contactsSlice";
 import { changeFilter } from "../redux/filtersSlice";
+import { useEffect } from "react";
+import { fetchContacts, addContact, deleteContact } from "../redux/contactsOps";
 
 const App = () => {
-  const filter = useSelector((state) => state.filters.name);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  const filter = useSelector((state) => state.filters.name);
 
   const handleAddContact = (newContact) => {
     dispatch(addContact(newContact));
