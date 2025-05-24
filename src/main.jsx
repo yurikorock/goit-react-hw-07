@@ -7,15 +7,11 @@ import "modern-normalize";
 //
 import "./index.css";
 import App from "./components/App";
-import { PersistGate } from "redux-persist/integration/react";
-import { persistor } from "./redux/store";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <App />
-      </PersistGate>
+      <App />
     </Provider>
   </StrictMode>
 );
