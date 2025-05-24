@@ -18,7 +18,6 @@ const ContactForm = () => {
       addContact({
         name: values.name,
         number: values.number,
-        id: nanoid(),
       })
     );
 
